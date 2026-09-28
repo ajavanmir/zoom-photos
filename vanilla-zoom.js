@@ -1,3 +1,7 @@
+/*
+Copyright amir javanmir
+Released on: sep 28, 2026
+*/
 (function (window) {
     let defineLibrary = () => ({
         init: function (imageId) {

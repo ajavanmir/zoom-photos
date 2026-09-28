@@ -1,144 +1,230 @@
-اینم نسخه‌ی کامل README به صورت **قابل کپی** (کافیه کل محتوای داخل بلوک کد رو کپی کنی و توی فایل `README.md` پروژه‌ت بذاری):
+# Vanilla Zoom 🔍
 
-```markdown
-# VanillaZoom
+ A lightweight and dependency-free JavaScript library for adding image zoom functionality to your web projects.
 
-A lightweight, dependency-free JavaScript library for adding image zoom functionality to your web pages. Inspired by the classic W3Schools image zoom effect, rewritten in pure vanilla JavaScript.
+ **Vanilla Zoom** is built with pure JavaScript and allows users to zoom into images by hovering over them.
 
----
+ ## ✨ Features
 
-## ✨ Features
+ - 🚀 No dependencies
+- ⚡ Built with Vanilla JavaScript
+- 🔍 Image zoom on hover
+- 🖱️ Zoom lens follows the mouse cursor
+- 🎨 Easy to customize with CSS
+- 📦 Lightweight and simple
+- 🌐 Works with standard HTML, CSS, and JavaScript projects
 
-- 🪶 **Zero dependencies** — Pure vanilla JavaScript
-- 🎯 **Simple API** — Just one method: `init()`
-- 🖱️ **Magnifier lens** — Follows the cursor over the image
-- 🔍 **Side preview** — Zoomed result rendered in a separate container
-- 📦 **Tiny footprint** — No build step, no bundler needed
-- 🌐 **Global access** — Available as `window.vanillaZoom`
+ ## 📁 Project Structure
 
----
-
-## 📦 Installation
-
-Simply include the script in your HTML file:
-
-```html
-<script src="vanillaZoom.js"></script>
+```
+vanilla-zoom/
+├── index.html
+├── style.css
+├── vanillaZoom.js
+└── README.md
 ```
 
-Or copy the IIFE directly into your project.
+ ## 🚀 Installation
 
----
+ Download or clone the project and include the JavaScript file in your HTML:
 
-## 🚀 Usage
-
-### 1. Add an image to your HTML
-
-```html
-<img id="myImage" src="image.jpg" alt="Zoomable image" width="400">
+```
+<script src="./vanillaZoom.js"></script>
 ```
 
-### 2. Initialize the library
+ You also need to add the required CSS styles:
 
-```html
-<script>
-  vanillaZoom.init('#myImage');
-</script>
 ```
-
-That's it! Hover over the image and a lens will appear, with a zoomed preview shown below.
-
----
-
-## 🎨 Required CSS
-
-The library creates elements with the following classes. You should style them in your stylesheet:
-
-```css
-.zoom-container {
-  position: absolute;
-}
-
 .img-zoom-lens {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  width: 60px;
-  height: 60px;
-  cursor: crosshair;
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
 }
 
 .img-zoom-result {
-  border: 1px solid #d4d4d4;
-  width: 300px;
-  height: 300px;
-  background-repeat: no-repeat;
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    border: 1px solid #d4d4d4;
+    background-repeat: no-repeat;
+    z-index: 1000;
+}
+
+.zoom-container {
+    position: absolute;
 }
 ```
 
-> Adjust `width` and `height` on `.img-zoom-lens` and `.img-zoom-result` to control the zoom ratio.
+ ## 🛠️ Usage
 
----
+ First, add an image to your HTML:
 
-## 🔧 API
-
-### `vanillaZoom.init(selector)`
-
-Initializes zoom behavior on the target image.
-
-| Parameter  | Type     | Description                                  |
-|------------|----------|----------------------------------------------|
-| `selector` | `string` | A CSS selector pointing to the `<img>` element |
-
-**Example:**
-
-```js
-vanillaZoom.init('#productImage');
+```
+<img
+    id="product-image"
+    src="./images/product.jpg"
+    alt="Product"
+>
 ```
 
-If the element doesn't exist, an error is logged to the console.
+ Then initialize Vanilla Zoom:
 
----
-
-## ⚙️ How It Works
-
-1. On `mouseenter` over the target image, a `.zoom-container` is created and appended to the `<body>`.
-2. Two elements are inserted inside it:
-   - `.img-zoom-lens` — the magnifying lens that follows the cursor.
-   - `.img-zoom-result` — the zoomed preview window.
-3. The zoom ratio (`cx`, `cy`) is computed based on the lens and result dimensions.
-4. On `mousemove`, the lens and the background position of the result window are updated.
-5. The lens is clamped to the image bounds so it never overflows.
-
----
-
-## 🐛 Known Limitations
-
-- The zoom container is created on every `mouseenter` — if you re-enter the image multiple times, containers may stack. Consider adding cleanup on `mouseleave` if needed.
-- Only one image can be initialized per call (call `init()` multiple times for multiple images).
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!  
-Feel free to open an issue or submit a pull request.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the `LICENSE` file for details.
-
----
-
-## 🙏 Acknowledgements
-
-- Inspired by the classic W3Schools image zoom tutorial.
-- Rewritten in modern vanilla JavaScript with a clean, reusable API.
-
----
-
-**Made with ❤️ by [Your Name]**
+```
+vanillaZoom.init('#product-image');
 ```
 
-فقط یادت باشه به جای `[Your Name]` اسم خودت رو بذاری. موفق باشی! 🚀
+ That's it! Move your mouse over the image to activate the zoom effect.
+
+ ## 💡 Complete Example
+
+ ### HTML
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vanilla Zoom</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <img
+        id="product-image"
+        src="./images/product.jpg"
+        alt="Product"
+    >
+
+    <script src="./vanillaZoom.js"></script>
+
+    <script>
+        vanillaZoom.init('#product-image');
+    </script>
+
+</body>
+</html>
+```
+
+ ### CSS
+
+```
+.img-zoom-lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.img-zoom-result {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    border: 1px solid #d4d4d4;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.zoom-container {
+    position: absolute;
+}
+```
+
+ ## 📚 API
+
+ ### `vanillaZoom.init(imageSelector)`
+
+ Initializes the zoom functionality for the specified image.
+
+```
+vanillaZoom.init('#product-image');
+```
+
+ ### Parameters
+
+ | Parameter | Type | Description |
+| --- | --- | --- |
+| `imageSelector` | `string` | A CSS selector targeting the image element |
+
+### Examples
+
+ Using an ID:
+
+```
+vanillaZoom.init('#product-image');
+```
+
+ Using a class:
+
+```
+vanillaZoom.init('.product-image');
+```
+
+ ## 🔍 How It Works
+
+ When the mouse enters the image:
+
+ 1. The image dimensions and position are calculated.
+2. A zoom container is created dynamically.
+3. A zoom lens is placed over the image.
+4. The original image is used as the background of the zoom result.
+5. The zoom level is calculated based on the lens and result dimensions.
+6. The zoom result follows the mouse position.
+7. When the mouse leaves the zoom area, the zoom container is removed.
+
+ ## ⚠️ Error Handling
+
+ If the provided selector does not match an existing element, the library logs an error to the console:
+
+```
+image element dosen't exist
+```
+
+ For example:
+
+```
+vanillaZoom.init('#does-not-exist');
+```
+
+ ## 🌐 Browser Support
+
+ Vanilla Zoom uses standard browser APIs such as:
+
+ - `querySelector`
+- `addEventListener`
+- `getBoundingClientRect`
+- `classList`
+- `createElement`
+
+ It is designed for modern browsers.
+
+ ## 🤝 Contributing
+
+ Contributions, issues, and feature requests are welcome.
+
+ To contribute:
+
+```
+git clone https://github.com/USERNAME/vanilla-zoom.git
+
+cd vanilla-zoom
+
+git checkout -b feature/my-feature
+```
+
+ Make your changes, commit them, and create a Pull Request.
+
+ ## 📄 License
+
+ This project is open-source and available under the **MIT License**.
+
+---
+
+ Made with ❤️ using Vanilla JavaScript

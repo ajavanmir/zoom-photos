@@ -35,24 +35,19 @@ vanilla-zoom/
  You also need to add the required CSS styles:
 
 ```
+* {box-sizing: border-box;}
+
 .img-zoom-lens {
     position: absolute;
-    border: 1px solid #d4d4d4;
-    width: 100px;
-    height: 100px;
-    pointer-events: none;
+    border: 2px solid red;    
+    width: 150px;
+    height: 150px;
 }
 
 .img-zoom-result {
-    position: absolute;
-    width: 400px;
+    border: 1px solid #d4d4d4;    
+    width: 300px;
     height: 300px;
-    border: 1px solid #d4d4d4;
-    background-repeat: no-repeat;
-    z-index: 1000;
-}
-
-.zoom-container {
     position: absolute;
 }
 ```
@@ -62,11 +57,7 @@ vanilla-zoom/
  First, add an image to your HTML:
 
 ```
-<img
-    id="product-image"
-    src="./images/product.jpg"
-    alt="Product"
->
+<img id="myimage" src="images/image-1.jfif" alt="Girl">
 ```
 
  Then initialize Vanilla Zoom:
@@ -87,25 +78,17 @@ vanillaZoom.init('#product-image');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Vanilla Zoom</title>
-
-    <link rel="stylesheet" href="./style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zoom Image</title>
+    <link rel="stylesheet" href="vanilla-zoom.css">
 </head>
 <body>
+    <img id="myimage" src="images/image-1.jfif" alt="Girl">
 
-    <img
-        id="product-image"
-        src="./images/product.jpg"
-        alt="Product"
-    >
-
-    <script src="./vanillaZoom.js"></script>
-
-    <script>
-        vanillaZoom.init('#product-image');
+    <script src="vanilla-zoom.js"></script>
+    <script>    
+        vanillaZoom.init('#myimage')
     </script>
-
 </body>
 </html>
 ```
